@@ -7,11 +7,11 @@ class Svnui < Formula
   on_macos do
     on_arm do
       url "https://github.com/jc-p/svnui/releases/download/v0.1.0/svnui-0.1.0-aarch64-apple-darwin.tar.gz"
-      sha256 "b2b76757786ab378407b9befc26742aa546e763d4f4ff067ad86b6cb4b7ae661"
+      sha256 "925094a7c50d87019b2ec1359492a232af2da64cd960d1d04f0c61dc0c812a09"
     end
     on_intel do
       url "https://github.com/jc-p/svnui/releases/download/v0.1.0/svnui-0.1.0-x86_64-apple-darwin.tar.gz"
-      sha256 "f3e233d939a83b7c9978d98c06b3828e8494886fef2b50dd4d6db5c4fe7383e6"
+      sha256 "73cd09fe5669c904be33357398ba8788c9408242496d29b64fc6ba9c6e913f09"
     end
   end
 
