@@ -3,22 +3,14 @@ class Svnui < Formula
   homepage "https://github.com/jc-p/svnui"
   license "MIT"
 
-  # 预编译二进制，不从源码构建。
-  #
-  # 为什么不 depends_on "rust" + cargo install：
-  # 1. brew 的构建沙箱里 cargo 访问不了 ~/.cargo（依赖下载会失败）
-  # 2. 编译时间从 ~10 秒变成 ~3 分钟，还白耗 GitHub runner 资源
-  # 3. 用户装个 5MB 的二进制不该先装整个 Rust 工具链
-  on_macos do
-    on_arm do
-      url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-aarch64-apple-darwin.tar.gz"
-      sha256 "a343d2c7e74349aa42b1aa62433ec5830dfa3ea42ac6b4b6d004df158d6cfa4b"
-    end
-    on_intel do
-      url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-x86_64-apple-darwin.tar.gz"
-      sha256 "2a5666f5163aa9c7752a0fe24e9ed3f0140de5babe647c01217a632e76638d32"
-    end
-  end
+  # 使用 if: OS.arch 来为不同架构指定不同的下载链接
+  # 这是 Homebrew 官方推荐的写法，可以确保解析器能正确识别到 url 字段
+  url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-aarch64-apple-darwin.tar.gz" if OS.arch == :arm64
+  url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-x86_64-apple-darwin.tar.gz" if OS.arch == :x86_64
+
+  # 同样，sha256 也需要对应修改
+  sha256 "a343d2c7e74349aa42b1aa62433ec5830dfa3ea42ac6b4b6d004df158d6cfa4b" if OS.arch == :arm64
+  sha256 "2a5666f5163aa9c7752a0fe24e9ed3f0140de5babe647c01217a632e76638d32" if OS.arch == :x86_64
 
   def install
     bin.install "svnui"
