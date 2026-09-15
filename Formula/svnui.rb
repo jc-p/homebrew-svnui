@@ -12,11 +12,11 @@ class Svnui < Formula
   # 3. 用户装个 5MB 的二进制不该先装整个 Rust 工具链
   on_macos do
     on_arm do
-      url "https://github.com/jc-p/svnui/releases/download/v0.1.1/svnui-0.1.1-aarch64-apple-darwin.tar.gz"
+      url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-aarch64-apple-darwin.tar.gz"
       sha256 "a343d2c7e74349aa42b1aa62433ec5830dfa3ea42ac6b4b6d004df158d6cfa4b"
     end
     on_intel do
-      url "https://github.com/jc-p/svnui/releases/download/v0.1.1/svnui-0.1.1-x86_64-apple-darwin.tar.gz"
+      url "https://github.com/jc-p/svnui/releases/download/0.1.1/svnui-0.1.1-x86_64-apple-darwin.tar.gz"
       sha256 "2a5666f5163aa9c7752a0fe24e9ed3f0140de5babe647c01217a632e76638d32"
     end
   end
