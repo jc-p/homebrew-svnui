@@ -4,14 +4,20 @@ class Svnui < Formula
   license "MIT"
   version "0.1.1"
 
+  # 预编译二进制，不从源码构建。
+  #
+  # 为什么不 depends_on "rust" + cargo install：
+  # 1. brew 的构建沙箱里 cargo 访问不了 ~/.cargo（依赖下载会失败）
+  # 2. 编译时间从 ~10 秒变成 ~3 分钟，还白耗 GitHub runner 资源
+  # 3. 用户装个 5MB 的二进制不该先装整个 Rust 工具链
   on_macos do
     on_arm do
-      url "https://github.com/jc-p/svnui/releases/download/v0.1.0/svnui-0.1.1-aarch64-apple-darwin.tar.gz"
-      sha256 "925094a7c50d87019b2ec1359492a232af2da64cd960d1d04f0c61dc0c812a09"
+      url "https://github.com/jc-p/svnui/releases/download/v0.1.1/svnui-0.1.1-aarch64-apple-darwin.tar.gz"
+      sha256 "a343d2c7e74349aa42b1aa62433ec5830dfa3ea42ac6b4b6d004df158d6cfa4b"
     end
     on_intel do
-      url "https://github.com/jc-p/svnui/releases/download/v0.1.0/svnui-0.1.1-x86_64-apple-darwin.tar.gz"
-      sha256 "73cd09fe5669c904be33357398ba8788c9408242496d29b64fc6ba9c6e913f09"
+      url "https://github.com/jc-p/svnui/releases/download/v0.1.1/svnui-0.1.1-x86_64-apple-darwin.tar.gz"
+      sha256 "2a5666f5163aa9c7752a0fe24e9ed3f0140de5babe647c01217a632e76638d32"
     end
   end
 
@@ -20,6 +26,7 @@ class Svnui < Formula
   end
 
   test do
-    assert_match "0.1.0", shell_output("#{bin}/svnui --version")
+    # --version 由 clap 的 #[command(version)] 提供
+    assert_match "0.1.1", shell_output("#{bin}/svnui --version")
   end
 end
