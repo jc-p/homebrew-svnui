@@ -2,7 +2,6 @@ class Svnui < Formula
   desc "Subversion with a real TUI: status, diff, commit, conflicts"
   homepage "https://github.com/jc-p/svnui"
   license "MIT"
-  version "0.1.1"
 
   # 预编译二进制，不从源码构建。
   #
