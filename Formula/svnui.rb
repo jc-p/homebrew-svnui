@@ -3,16 +3,16 @@ class Svnui < Formula
   homepage "https://github.com/jc-p/svnui"
 
   # 默认使用 x86_64 的 URL（作为所有平台的回退）
-  url "https://github.com/jc-p/svnui/releases/download/0.2.2/svnui-0.2.2-x86_64-apple-darwin.tar.gz"
-  sha256 "d742c8aab1a6d7e23a43aea43d27e62a143c21340ac027a17cb83095748866b8"
+  url "https://github.com/jc-p/svnui/releases/download/0.2.3/svnui-0.2.3-x86_64-apple-darwin.tar.gz"
+  sha256 "721ebf4ae5f31ea9c8d2ace4a7dbda6bd1f3bf0d47b11214256fe0040698ae02"
 
   license "MIT"
 
   # 针对 macOS ARM 架构覆盖 URL 和 sha256
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/jc-p/svnui/releases/download/0.2.2/svnui-0.2.2-aarch64-apple-darwin.tar.gz"
-      sha256 "bcbc77174a67e9e0c5477f75eb22c47358ac8bcc9b15e564c7a0af4179401ed6"
+      url "https://github.com/jc-p/svnui/releases/download/0.2.3/svnui-0.2.3-aarch64-apple-darwin.tar.gz"
+      sha256 "16f7d26331ef53047e76e5080c9404c1334e056e7492756dfbfcc67bee892f34"
     end
   end
 
@@ -21,6 +21,6 @@ class Svnui < Formula
   end
 
   test do
-    assert_match "0.2.2", shell_output("#{bin}/svnui --version")
+    assert_match "0.2.3", shell_output("#{bin}/svnui --version")
   end
 end
